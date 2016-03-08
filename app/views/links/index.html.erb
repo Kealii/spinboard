@@ -17,11 +17,12 @@
   <% current_user.links.each do |link| %>
     <ul>
       <li>
-        <h4><%= link.title %></h4>
         <% if link.read %>
+          <h4><s><%= link.title %></s></h4>
           <h5><s><%= link.url %></s></h5>
           <%= link_to 'Mark as Unread', edit_link_path(link) %>
         <% else %>
+          <h4><%= link.title %></h4>
           <h5><%= link.url %></h5>
           <%= link_to 'Mark as Read', edit_link_path(link) %>
         <% end %>
