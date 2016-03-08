@@ -12,7 +12,7 @@ RSpec.feature 'user logs out' do
     click_link 'Logout'
 
     expect(page).to_not have_content('test@example.com')
-    expect(current_path).to eq root_path
+    expect(current_path).to eq login_path
   end
 
 end
