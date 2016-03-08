@@ -15,9 +15,16 @@ class LinksController < ApplicationController
     end
   end
 
+  def edit
+    link = Link.find(params[:id])
+    link.read ? link.read = false : link.read = true
+    link.save
+    redirect_to links_path
+  end
+
   private
 
   def link_params
-    params.require(:link).permit(:title, :url)
+    params.require(:link).permit(:id, :title, :url)
   end
 end

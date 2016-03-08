@@ -35,5 +35,40 @@ RSpec.feature 'user creates links' do
       expect(page).to have_content('http://google.com')
       expect(page).to have_content('http://steampowered.com')
     end
+
+    it 'can update links status' do
+      fill_in 'link_title', with: 'Test Link'
+      fill_in 'link_url', with: 'http://google.com'
+      click_button 'Submit'
+
+      expect(current_path).to eq(links_path)
+      within('li') do
+        click_link 'Mark as Read'
+      end
+      expect(page).to have_content 'Mark as Unread'
+
+      within('li') do
+        click_link 'Mark as Unread'
+      end
+      expect(page).to have_content 'Mark as Read'
+    end
+  end
+
+  context 'with invalid credentials' do
+    it 'must have a title' do
+      fill_in 'link_url', with: 'http://google.com'
+      click_button 'Submit'
+
+      expect(page).to have_content('Did not Save')
+      expect(page).to_not have_content('http://google.com')
+    end
+
+    it 'must have a valid url' do
+      fill_in 'link_title', with: 'Google'
+      click_button 'Submit'
+
+      expect(page).to have_content('Did not Save')
+      expect(page).to_not have_content('Google')
+    end
   end
 end
