@@ -9,7 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'bcrypt', '~> 3.1.7'
-# gem 'capistrano-rails', group: :development
+gem 'validate_url'
 
 group :development, :test do
   gem 'byebug'
