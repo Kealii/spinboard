@@ -1,0 +1,8 @@
+<div class="pull-right">
+  <% if current_user %>
+    <h5>Logged in as: <%= current_user.email %></h5>
+    <%= link_to 'Logout', '/logout', class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'Home', '/', class: 'btn btn-primary' %>
+  <% end %>
+</div>
