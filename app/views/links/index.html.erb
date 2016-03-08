@@ -1,12 +1,32 @@
 <h3>New Link</h3>
 <%= render 'links/new_link' %>
 
+<div class="row">
+  <div class="form-group search-bar">
+    <br>
+    <%= form_tag id: 'seach-form' do %>
+      <%= text_field_tag :search, params[:search], placeholder: 'Search', class: 'form-control' %>
+    <% end %>
+  </div>
+</div>
+
+<button class="btn btn-default alphabetSort">Sort Alphabetically</button>
+<button class="btn btn-default statusSort">Filter By Status</button>
+
 <div>
   <h3>Links</h3>
-  <ul>
+  <ul id='links'>
   </ul>
 </div>
 
 <script>
+  $('.search-bar').on('keyup', function () {
+    //SEARCH
+  });
+
+  $('.alphabetSort').on('click', function () {
+    alphabetSort();
+  });
+
   fetchLinks('/api/v1/links')
 </script>
