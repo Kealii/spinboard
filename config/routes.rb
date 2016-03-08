@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post '/users', to: 'users#create'
   resources :links, only: [:index, :create, :edit, :update] do
     member do
-      patch '/change_status', to: 'links#change_status'
+      post '/change_status', to: 'links#change_status'
     end
   end
 
@@ -12,4 +12,9 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
+  namespace :api do
+    namespace :v1 do
+      resources :links, only: [:index]
+    end
+  end
 end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'user creates links' do
+RSpec.feature 'user creates links', js: true do
 
   before :each do
     User.create(email: 'test@example.com', password: 'password')
