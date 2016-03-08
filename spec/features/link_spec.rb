@@ -18,9 +18,9 @@ RSpec.feature 'user creates links' do
       fill_in 'link_url', with: 'http://google.com'
       click_button 'Submit'
 
-      expect(page).to have_content('Test Link')
-      expect(page).to have_content('http://google.com')
-      expect(current_path).to eq(links_path)
+      expect(page).to have_content 'Test Link'
+      expect(page).to have_content 'http://google.com'
+      expect(current_path).to eq links_path
     end
 
     it 'can display all links' do
@@ -32,8 +32,8 @@ RSpec.feature 'user creates links' do
       fill_in 'link_url', with: 'http://steampowered.com'
       click_button 'Submit'
 
-      expect(page).to have_content('http://google.com')
-      expect(page).to have_content('http://steampowered.com')
+      expect(page).to have_content 'http://google.com'
+      expect(page).to have_content 'http://steampowered.com'
     end
 
     it 'can update links status' do
@@ -41,16 +41,32 @@ RSpec.feature 'user creates links' do
       fill_in 'link_url', with: 'http://google.com'
       click_button 'Submit'
 
-      expect(current_path).to eq(links_path)
+      expect(current_path).to eq links_path
       within('li') do
-        click_link 'Mark as Read'
+        click_on 'Mark as Read'
       end
-      expect(page).to have_content 'Mark as Unread'
+      expect(page).to have_selector 'input[type=submit][value="Mark as Unread"]'
 
       within('li') do
-        click_link 'Mark as Unread'
+        click_on 'Mark as Unread'
       end
-      expect(page).to have_content 'Mark as Read'
+      expect(page).to have_selector 'input[type=submit][value="Mark as Read"]'
+    end
+
+    it 'can be edited' do
+      fill_in 'link_title', with: 'Test Link'
+      fill_in 'link_url', with: 'http://google.com'
+      click_button 'Submit'
+
+      within('li') do
+        click_on 'Edit'
+      end
+
+      fill_in 'link_title', with: 'New Test Link'
+      fill_in 'link_url', with: 'http://steampowered.com'
+      click_on 'Update'
+
+      expect(page).to have_content 'http://steampowered.com'
     end
   end
 
@@ -59,16 +75,16 @@ RSpec.feature 'user creates links' do
       fill_in 'link_url', with: 'http://google.com'
       click_button 'Submit'
 
-      expect(page).to have_content('Did not Save')
-      expect(page).to_not have_content('http://google.com')
+      expect(page).to have_content 'Did not Save'
+      expect(page).to_not have_content 'http://google.com'
     end
 
     it 'must have a valid url' do
       fill_in 'link_title', with: 'Google'
       click_button 'Submit'
 
-      expect(page).to have_content('Did not Save')
-      expect(page).to_not have_content('Google')
+      expect(page).to have_content 'Did not Save'
+      expect(page).to_not have_content 'Google'
     end
   end
 end
