@@ -86,5 +86,22 @@ RSpec.feature 'user creates links' do
       expect(page).to have_content 'Did not Save'
       expect(page).to_not have_content 'Google'
     end
+
+
+    it 'must have a valid url when editing' do
+      fill_in 'link_title', with: 'Test Link'
+      fill_in 'link_url', with: 'http://google.com'
+      click_button 'Submit'
+
+      within('li') do
+        click_on 'Edit'
+      end
+
+      fill_in 'link_title', with: 'New Test Link'
+      fill_in 'link_url', with: 'steampowered.com'
+      click_on 'Update'
+
+      expect(page).to_not have_content 'http://steampowered.com'
+    end
   end
 end
