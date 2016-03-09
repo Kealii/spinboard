@@ -1,7 +1,7 @@
-<%= form_for @link, url: link_path(@link) do |f| %>
-  <%= f.label :title %>
+<br>
+<br>
+<%= bootstrap_form_for @link, url: link_path(@link) do |f| %>
   <%= f.text_field :title %>
-  <%= f.label :url %>
   <%= f.text_field :url %>
   <%= f.submit 'Update', class: 'btn btn-success' %>
 <% end %>

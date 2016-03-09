@@ -1,7 +1,7 @@
 <h1>Signup!</h1>
-<%= form_for :user, url: '/users' do |f| %>
-  Email: <%= f.text_field :email %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
-  <%= f.submit "Submit" %>
+<%= bootstrap_form_for :user, url: '/users' do |f| %>
+  <%= f.text_field :email %>
+  <%= f.password_field :password %>
+  <%= f.password_field :password_confirmation %>
+  <%= f.submit 'Sign Up' , class: 'btn btn-primary' %>
 <% end %>

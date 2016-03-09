@@ -10,7 +10,7 @@ RSpec.feature 'user signs up' do
       fill_in 'user_email', with: 'test@example.com'
       fill_in 'user_password', with: 'password'
       fill_in 'user_password_confirmation', with: 'password'
-      click_button 'Submit'
+      click_button 'Sign Up'
 
       expect(current_path).to eq(links_path)
       expect(page).to have_content('Signed Up')
@@ -23,7 +23,7 @@ RSpec.feature 'user signs up' do
       click_link('Sign Up')
       fill_in 'user_password', with: 'password'
       fill_in 'user_password_confirmation', with: 'password'
-      click_button 'Submit'
+      click_button 'Sign Up'
 
       expect(current_path).to eq(signup_path)
       expect(page).to have_content('Please Try Again.')
@@ -36,7 +36,7 @@ RSpec.feature 'user signs up' do
       fill_in 'user_email', with: 'test@example.com'
       fill_in 'user_password', with: 'password'
       fill_in 'user_password_confirmation', with: 'password'
-      click_button 'Submit'
+      click_button 'Sign Up'
 
       expect(current_path).to eq(signup_path)
       expect(page).to have_content('Please Try Again.')
@@ -46,7 +46,7 @@ RSpec.feature 'user signs up' do
       visit root_path
       click_link('Sign Up')
       fill_in 'user_email', with: 'test@example.com'
-      click_button 'Submit'
+      click_button 'Sign Up'
 
       expect(current_path).to eq(signup_path)
       expect(page).to have_content('Please Try Again.')

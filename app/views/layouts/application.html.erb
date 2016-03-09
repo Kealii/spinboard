@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Spinboard</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<div class="container">
-  <div class="well">
-
-    <%= render '/layouts/flash' %>
-    <%= render '/layouts/current_user' %>
-    <%= yield %>
-
-  </div>
-</div>
-
-</body>
+  <head>
+    <title>Spinboard</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="container">
+      <div class="well">
+        <%= render '/layouts/flash' %>
+        <%= render '/layouts/current_user' %>
+        <%= yield %>
+      </div>
+    </div>
+  </body>
 </html>
