@@ -13,6 +13,7 @@ gem 'validate_url'
 gem 'bootstrap-sass'
 gem 'bootstrap_form'
 gem 'figaro'
+gem 'rails_12factor'
 
 group :development, :test do
   gem 'byebug'
