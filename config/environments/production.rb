@@ -12,7 +12,7 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
   config.log_formatter = ::Logger::Formatter.new# Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.action_mail.smtp_settings = {
+  config.action_mailer.smtp_settings = {
       address: 'smtp.mandrillapp.com',
       port: 587,
       user_name: ENV['MANDRILL_USERNAME'],
