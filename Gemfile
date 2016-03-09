@@ -12,6 +12,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'validate_url'
 gem 'bootstrap-sass'
 gem 'bootstrap_form'
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug'

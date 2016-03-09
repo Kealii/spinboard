@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :links, only: [:index, :create, :edit, :update] do
     member do
       post '/change_status', to: 'links#change_status'
+      get '/recommend', to: 'links#recommend'
+      post '/send_email', to: 'links#send_email'
     end
   end
 

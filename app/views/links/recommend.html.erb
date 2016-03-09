@@ -1,0 +1,4 @@
+<%= form_for :recipient, url: "/links/#{@link_id}/send_email" do |f| %>
+  <%= f.text_field :email %>
+  <%= f.submit %>
+<% end %>

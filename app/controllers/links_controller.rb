@@ -32,9 +32,25 @@ class LinksController < ApplicationController
     redirect_to links_path
   end
 
+  def recommend
+    @link_id = Link.find(params[:id]).id
+  end
+
+  def send_email
+    url = Link.find(params[:id]).url
+    recipient = Recipient.create(recipient_params)
+    RecipientNotifier.send_email(recipient, url).deliver_now
+    flash[:notice] = 'Email Sent!'
+    redirect_to links_path
+  end
+
   private
 
   def link_params
     params.require(:link).permit(:title, :url)
+  end
+
+  def recipient_params
+    params.require(:recipient).permit(:email)
   end
 end
